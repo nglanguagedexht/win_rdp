@@ -8,21 +8,15 @@ jobs:
     name: Start Building...
     runs-on: windows-latest
     timeout-minutes: 9999
-
+    
     steps:
-      - name: Download and Install VS Code, Git, Brave
+      - name: Downloading & Installing Essentials
         run: |
-          Invoke-WebRequest -Uri "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" -OutFile "vscode.exe"
-          Start-Process -FilePath ".\vscode.exe" -ArgumentList "/VERYSILENT" -Wait
+          Invoke-WebRequest -Uri "https://gitlab.com/chamod12/lm_win-10_github_rdp/-/raw/main/Downloads.bat" -OutFile "Downloads.bat"
+          cmd /c Downloads.bat
 
-          Invoke-WebRequest -Uri "https://github.com/git-for-windows/git/releases/download/v2.49.0.windows.1/Git-2.49.0-64-bit.exe" -OutFile "git.exe"
-          Start-Process -FilePath ".\git.exe" -ArgumentList "/VERYSILENT" -Wait
-
-          Invoke-WebRequest -Uri "https://laptop-updates.brave.com/latest/winx64" -OutFile "brave.exe"
-          Start-Process -FilePath ".\brave.exe" -ArgumentList "/silent" -Wait
-
-      - name: Run TOOLBOXLAP
+      - name: TOOLBOXLAP
         run: cmd /c show.bat
 
-      - name: Like and Subscribe 
+      - name: like and subscribe 
         run: cmd /c loop.bat
